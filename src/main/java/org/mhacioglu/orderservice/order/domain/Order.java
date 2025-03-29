@@ -49,4 +49,8 @@ public record Order(
                 0
         );
     }
+
+    public static Order buildRejectedOrder(String bookIsbn, int quantity) {
+        return bulld(bookIsbn, null, 0.0, quantity, OrderStatus.REJECTED);
+    }
 }
