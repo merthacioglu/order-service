@@ -35,6 +35,21 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+bootBuildImage {
+    imageName = "mhacioglu/${project.name}:${project.version}"
+    environment = ["BP_JVM_VERSION": "17.*"]
+
+    docker {
+        publishRegistry {
+            username = project.findProperty("registryUsername")
+            password = project.findProperty("registryToken")
+            url = project.findProperty("registryUrl")
+        }
+    }
+
+}
+
+
 tasks.named('test') {
     useJUnitPlatform()
 }
