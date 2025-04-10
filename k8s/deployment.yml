@@ -33,4 +33,4 @@ spec:
             - name: POLAR_CATALOG_SERVICE_URL
               value: http://catalog-service
             - name: SPRING_CLOUD_CONFIG_URI
-              value: http://polar-config
+              value: http://polar-config:8888
