@@ -17,20 +17,20 @@ spec:
 
       containers:
         - name: order-service
-          image: mhacioglu/order-service:0.0.1-SNAPSHOT
+          image: mhacioglu/order-service:0.1.1-SNAPSHOT
           imagePullPolicy: Always
           lifecycle:
             preStop:
               exec:
                 command:  [ "sh", "-c", "sleep 5" ]
           ports:
-            - containerPort: 9001
+            - containerPort: 9002
           env:
-            - name: BPL_JVM_THREAD_COUNT
-              value: "50"
             - name: SPRING_R2DBC_URL
-              value: r2dbc:postgresql://polar-postgres-order/polardb_order
+              value: r2dbc:postgresql://polar-postgres/polardb_order
             - name: SPRING_FLYWAY_URL
-              value: jdbc:postgresql://polar-postgres-order/polardb_order
+              value: jdbc:postgresql://polar-postgres/polardb_order
             - name: POLAR_CATALOG_SERVICE_URL
-              value: http://catalog-service:9001
+              value: http://catalog-service
+            - name: SPRING_CLOUD_CONFIG_URI
+              value: http://polar-config

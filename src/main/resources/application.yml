@@ -17,6 +17,11 @@ spring:
     url: jdbc:postgresql://localhost:5433/polardb_order
     baseline-on-migrate: true
 
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888/
 server:
   shutdown: graceful
   netty:
@@ -24,3 +29,4 @@ server:
   port: 9002
 polar:
   catalog-service-url: http://localhost:9001
+  greeting: Welcome to the Order Service!
