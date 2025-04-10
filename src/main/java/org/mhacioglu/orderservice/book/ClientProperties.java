@@ -2,20 +2,34 @@ package org.mhacioglu.orderservice.book;
 
 import jakarta.validation.constraints.NotNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+
 
 import java.net.URI;
 
-@RefreshScope
 @ConfigurationProperties(prefix = "polar")
-public record ClientProperties (
+public class ClientProperties {
+    public ClientProperties() {
+    }
 
     @NotNull
-    URI catalogServiceUrl,
+    private URI catalogServiceUrl;
 
-    String greeting
-) {
+    private String greeting;
+
+    // Getters and setters
+    public URI getCatalogServiceUrl() {
+        return catalogServiceUrl;
+    }
+
+    public void setCatalogServiceUrl(URI catalogServiceUrl) {
+        this.catalogServiceUrl = catalogServiceUrl;
+    }
+
     public String getGreeting() {
         return greeting;
+    }
+
+    public void setGreeting(String greeting) {
+        this.greeting = greeting;
     }
 }

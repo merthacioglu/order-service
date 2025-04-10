@@ -11,7 +11,7 @@ public class ClientConfig {
     WebClient webClient(ClientProperties clientProperties,
                         WebClient.Builder webClientBuilder) {
         return webClientBuilder
-                .baseUrl(clientProperties.catalogServiceUrl().toString())
+                .baseUrl(clientProperties.getCatalogServiceUrl().toString())
                 .build();
     }
 }
