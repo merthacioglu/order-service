@@ -24,6 +24,29 @@ spring:
       enabled: false
     config:
       uri: http://localhost:8888/
+    function:
+      definition: dispatchOrder
+    stream:
+      source: acceptOrder
+      bindings:
+        dispatchOrder-in-0:
+          destination: order-dispatched
+          group: ${spring.application.name}
+        acceptOrder-out-0:
+          destination: order-accepted
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: user
+    password: password
+    connection-timeout: 5s
+    bindings:
+      acceptOrder-out-0:
+        producer:
+          transacted: true
+
+
 server:
   shutdown: graceful
   netty:
