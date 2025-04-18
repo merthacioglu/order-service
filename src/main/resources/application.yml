@@ -2,7 +2,7 @@ spring:
   r2dbc:
     username: user
     password: password
-    url: r2dbc:postgresql://localhost:5433/polardb_order
+    url: r2dbc:postgresql://localhost:5434/polardb_order
     pool:
       max-create-connection-time: 2s
       initial-size: 5
@@ -14,7 +14,7 @@ spring:
   flyway:
     user: ${spring.r2dbc.username}
     password: ${spring.r2dbc.password}
-    url: jdbc:postgresql://localhost:5433/polardb_order
+    url: jdbc:postgresql://localhost:5434/polardb_order
     baseline-on-migrate: true
 
   config:
@@ -34,6 +34,11 @@ spring:
           group: ${spring.application.name}
         acceptOrder-out-0:
           destination: order-accepted
+      rabbit:
+        bindings:
+          acceptedOrder-out-0:
+            producer:
+              transacted: true
 
   rabbitmq:
     host: localhost
@@ -41,10 +46,7 @@ spring:
     username: user
     password: password
     connection-timeout: 5s
-    bindings:
-      acceptOrder-out-0:
-        producer:
-          transacted: true
+
 
 
 server:
