@@ -17,7 +17,7 @@ spec:
 
       containers:
         - name: order-service
-          image: mhacioglu/order-service:0.1.1-SNAPSHOT
+          image: mhacioglu/order-service:1.0.1-SNAPSHOT
           imagePullPolicy: Always
           lifecycle:
             preStop:
@@ -34,3 +34,5 @@ spec:
               value: http://catalog-service
             - name: SPRING_CLOUD_CONFIG_URI
               value: http://polar-config:8888
+            - name: SPRING_RABBITMQ_HOST
+              value: polar-rabbitmq

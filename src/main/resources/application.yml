@@ -53,7 +53,13 @@ server:
   shutdown: graceful
   netty:
     connection-timeout: 2s
-  port: 9002
+  port: 9003
 polar:
   catalog-service-url: http://localhost:9001
   greeting: Welcome to the Order Service!
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
